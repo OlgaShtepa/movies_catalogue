@@ -6,9 +6,21 @@ headers = {
 }
 
 def get_single_movie(movie_id):
-    endpoint = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_TOKEN}"
+    endpoint = f"https://api.themoviedb.org/3/movie/{movie_id}"
+    headers = {
+        "Authorization": f"Bearer {API_TOKEN}"
+    }
     response = requests.get(endpoint, headers=headers)
     return response.json()
+
+def get_single_movie_cast(movie_id):
+    endpoint = f"https://api.themoviedb.org/3/movie/{movie_id}/credits"
+    headers = {
+        "Authorization": f"Bearer {API_TOKEN}"
+    }
+    response = requests.get(endpoint, headers=headers)
+    return response.json()["cast"]
+
 
 def get_popular_movies():
     endpoint = "https://api.themoviedb.org/3/movie/popular"
@@ -30,4 +42,5 @@ def get_movie_details(movie_id):
     endpoint = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={API_TOKEN}"
     response = requests.get(endpoint, headers=headers)
     return response.json()
+
 
