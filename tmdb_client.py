@@ -1,11 +1,11 @@
 import requests
+import os
 
-API_TOKEN = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1N2NmNjVmNmZiYjJhY2Y4YzY2M2I2ZjFiMzk0Mjc5NyIsInN1YiI6IjYzZTNhNWYyMTI4M2U5MDA4ZTQ4N2E5YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.a0GZEyPv7VTF9GimLwQGZeRFK2da-x5lWPxFszJnrMU"
+API_TOKEN = os.environ.get("TMDB_API_TOKEN", "")
 headers = {
     "Authorization": f"Bearer {API_TOKEN}"
 }
-API_KEY = "57cf65f6fbb2acf8c663b6f1b3942797"
-
+API_KEY = os.environ.get("TMDB_API_KEY", "")
 
 def call_tmdb_api(endpoint):
     full_url = f"https://api.themoviedb.org/3/{endpoint}"
